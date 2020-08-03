@@ -1,0 +1,83 @@
+<!-- ===The sitetest HTML using JavaScript===  -->
+{% extends "layout.html" %} {% block body %}
+<link rel="stylesheet" href="{{ url_for('static',filename='assets/css/smartphone.css')}}" />
+<link rel="stylesheet" href="{{ url_for('static',filename='assets/css/tablet.css')}}" />
+
+
+<div class="say" style="text-align: center;" data-aos="fade-up">
+    <h1>Sorry!</h1>
+    <br/>
+    <h2>
+        <p>This feature is only available for computers(PC)! </p>
+    </h2>
+    <br/>
+</div>
+<br/>
+<div class="device">
+
+    <!-- ======Buttons===== -->
+    <center data-aos="fade-up">
+        <button class="btn btn-light btn-lg tablink" onclick="openPage('tablet', this, 'black','tabletimg')" id="defaultOpen"><img src="{{ url_for('static',filename='assets/img/tablet.png')}}" id="tabletimg"></button>
+        <button class="btn btn-light btn-lg tablink" class="float:right;" onclick="openPage('smartphone', this, 'black', 'smartphoneimg')"><img src="{{ url_for('static',filename='assets/img/smartphone.png')}}" id="smartphoneimg"></button>
+        <!-- End -->
+    </center>
+
+    <hr/>
+
+    <div class="alert alert-warning fade show" role="alert">
+        <div class="input-group mb-3" data-aos="fade-down">
+            <input type="text" class="form-control" placeholder="Enter site url" id="siteurl">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="submitbutton" onclick="changesrc()">Submit</button>
+            </div>
+        </div>
+    </div>
+    <hr/>
+
+    <!-- ===Tablet Content ===-->
+    <div id="tablet" class="tabcontent" data-aos="fade-right">
+        <div class="tablet">
+            <div class="content1">
+                <iframe src="" style="width:100%;border:none;height:100%" id="tabletsrc"></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- Ends -->
+
+    <!-- ===Smartphone Content ===-->
+    <div id="smartphone" class="tabcontent" data-aos="fade-left">
+        <div class="smartphone">
+            <div class="content2">
+                <iframe src="" style="width:100%;border:none;height:100%" id="smartphonesrc"></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- Ends -->
+</div>
+
+<script>
+    function changeimgsrc(device) {
+        if (device == 'tabletimg') {
+            document.getElementById(device).src = "{{ url_for('static',filename='assets/img/tabletwhite.png')}}";
+            document.getElementById("smartphoneimg").src = "{{url_for('static', filename = 'assets/img/smartphone.png')}}";
+        } else {
+            document.getElementById(device).src = "{{ url_for('static',filename='assets/img/smartphonewhite.png')}}";
+            document.getElementById("tabletimg").src = "{{ url_for('static',filename='assets/img/tablet.png')}}";
+        }
+    }
+
+    // Execute a function when the user releases a key on the keyboard
+    input.addEventListener("keyup", function(event) {
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            document.getElementById("submitbutton").click();
+        }
+    });
+</script>
+
+</body>
+{% endblock %}
+<!-- ==Made By Dhruva Shaw== -->

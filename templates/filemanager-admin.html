@@ -1,0 +1,146 @@
+{% extends "layout-admin.html" %} {% block body %}
+<!--
+    Made By Dhruva Shaw
+    This is for the file manager
+-->
+<section id="portfolio" class="portfolio">
+    <div class="container">
+
+        <!-- ==Flashing Messages== -->
+        <div class="abs-tbr bg-3 w-20 z--1 dplay-md-none"></div>
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+            <i class='bx bxs-message-alt-check'></i> {{message}}
+        </div>
+        {% endfor %} {% endif %} {% endwith %}
+        <!-- ==Ends== -->
+
+        <div class="form-inline">
+            <!-- ====Create a File=== -->
+            <form class="form-inline" action="/create-file/{{req_path}}" method="POST" id="createfile">
+                <div class="form-group mx-sm-3 mb-2">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class='bx bxs-file-plus'></i></div>
+                        </div>
+                        <input type="text" name="filename" class="form-control" id="inlineFormInputGroupUsername" placeholder="/ {{req_path}} / filename.extension">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2"><i class='bx bxs-file-plus'></i></button>
+            </form>
+            <!-- ==End== -->
+            <hr/>
+            <hr/>
+
+            <!-- ====Create a Folder=== -->
+            <form class="form-inline" action="/create-folder" method="POST" id="createfolder">
+                <div class="form-group mx-sm-3 mb-2">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class='bx bxs-folder-plus'></i></div>
+                        </div>
+                        <input type="text" name="foldername" class="form-control" id="inlineFormInputGroupUsername" placeholder="/ {{req_path}}">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2"><i class='bx bxs-folder-plus' ></i></button>
+            </form>
+            <!-- ==End== -->
+        </div>
+
+        <hr/>
+        <div class="form-inline">
+            <!-- ====Delete a a File=== -->
+            <form class="form-inline" action="/delete-file/{{req_path}}" method="POST" id="deletefile">
+                <div class="form-group mx-sm-3 mb-2">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class='bx bxs-minus-circle'></i></div>
+                        </div>
+                        <input type="text" name="inlineFormInputGroupUsername" class="form-control" id="inlineFormInputGroupUsername" placeholder="/ {{req_path}} / filename.extension">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2"><i class='bx bxs-minus-circle' ></i></button>
+            </form>
+            <!-- ==End== -->
+            <hr/>
+            <hr/>
+
+            <!-- ====Delete a Folder=== -->
+            <form class="form-inline" action="/delete-folder/{{req_path}}" method="POST" id="deletefolder">
+                <button type="submit" class="btn btn-primary mb-2"><i class='bx bxs-folder-minus'></i></button>
+            </form>
+            <!-- ==End== -->
+        </div>
+        <hr/>
+
+        <div class="section-title" data-aos="fade-up" onclick="enterFileManager()" id="filemanager">
+            <h2>File Manager</h2>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+            {% for file in files %}
+            <div class="col-lg-4 col-md-6 portfolio-item">
+                <div class="portfolio-wrap">
+                    <div class="card mb-3">
+                        <div class="card-body text-success">
+                            <h5 class="card-title">{{req_path}} <i class='bx bx-folder'></i></h5>
+                            <p class="card-text" id="{{file}}">{{ file }}</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>{{file}}</h4>
+                        <div class="portfolio-links">
+                            <a href="/filemanager/{{req_path}}/{{ file }}" title="Check It!"><i class='bx bxs-door-open'></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <hr/>
+
+        <!-- ==Uploader== -->
+        <form method="post" action="/upload/{{req_path}}" enctype="multipart/form-data" class="form-inline" id="uploader">
+            <div class="form-group mx-sm-3 mb-2">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class='bx bxs-cloud-upload'></i></div>
+                    </div>
+                    <input type="file" name="img_file" class="form-control" id="inlineFormInputGroupUsername">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2"><i class='bx bxs-cloud-upload' ></i></button>
+        </form>
+        <!-- ==Ends== -->
+
+        <hr/>
+
+        <!-- ==Rename== -->
+        <form method="post" action="/rename/{{req_path}}" class="form-inline" id="rename">
+            <div class="form-group mx-sm-3 mb-2">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class='bx bx-file'></i></div>
+                    </div>
+                    <hr/>
+                    <hr/>
+
+
+                    <input type="text" name="namefilefolder" class="form-control" id="inlineFormInputGroupUsername" placeholder="/ {{req_path}} / filename.extension">&nbsp&nbsp
+
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class='bx bxs-edit'></i></div>
+                    </div>
+                    <input type="text" name="renamefilefolder" class="form-control" id="inlineFormInputGroupUsername" placeholder="/ {{req_path}} / newfilename.extension">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2"><i class='bx bxs-rename' ></i></button>
+        </form>
+        <!-- ==Ends-->
+
+        <hr/>
+        <hr/>
+        <p></p>
+    </div>
+</section>
+{% endblock %}

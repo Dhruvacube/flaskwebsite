@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>{{title}}</title>
+    <meta name="description" content="I am Dhruva Shaw, a cuber, student from Kolkata, India.I love cubing.On my YouTube Channel, I basically post videos about about cubing and some YouTube Video Templates.">
+    <meta name="author" content="Dhruva Shaw">
+    <meta name="robots" content="INDEX, FOLLOW">
+
+    <!-- Favicons -->
+    <link href="{{ url_for('static',filename='assets/img/favicon.png')}}" rel="icon">
+    <link href="{{ url_for('static',filename='assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="{{ url_for('static',filename='assets/vendor/icofont/icofont.min.css')}}" rel="stylesheet">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/venobox/1.8.6/venobox.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{{ url_for('static',filename='assets/css/style.css')}}" rel="stylesheet">
+
+</head>
+<style>
+    a {
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="d-flex align-items-center" style="">
+        <div class="container">
+
+            <!-- The main logo is shown in mobile version only. The centered nav-logo in nav menu is displayed in desktop view  -->
+            <div class="logo d-block d-lg-none">
+                <a href="" onclick="enterMain()"><img src="{{ url_for('static',filename='assets/img/logo.png')}}" alt="" class="img-fluid"></a>
+            </div>
+
+            <nav class="nav-menu d-none d-lg-block">
+                <ul class="nav-inner">
+                    <li class="active"><a href="" onclick="enterMain()">Home</a></li>
+                    <li class="drop-down"><a href="">Features</a>
+                        <ul>
+                            <li><a href="#about">Grade Giver</a></li>
+                            <li><a onclick="enterSiteTester()" style="cursor: pointer;">Site Tester</a></li>
+
+                            <li class="drop-down"><a href="#">YouTube Templates</a>
+                                <ul>
+                                    <li><a href="{{params['velosofy_url']}}" target="_blank">PC</a></li>
+                                    <li><a href="#">Android</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="" onclick="enterAbout()">About Us</a></li>
+
+                    <li class="nav-logo">
+                        <a href="" onclick="enterMain()"><img src="{{ url_for('static',filename='assets/img/logo.png')}}" alt="" class="img-fluid"></a>
+                    </li>
+
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a onclick="enterContacts()">Contact</a></li>
+
+                </ul>
+            </nav>
+            <!-- .nav-menu -->
+
+        </div>
+    </header>
+    <!-- End Header -->
+    {% block body %} {% endblock %}
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+
+        <div class="footer-top">
+
+            <div class="container">
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <a href="#header" class="scrollto footer-logo"><img src="{{ url_for('static',filename='assets/img/logo-white.png')}}" alt=""></a>
+                        <h3>Dhruva Shaw</h3>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="{{params['github_url']}}" class="github" target="_blank"><i class="bx bxl-github"></i></a>
+                    <a href="{{params['youtube_url']}}" class="youtube" target="_blank"><i class="bx bxl-youtube"></i></a>
+                    <a href="{{params['insta_url']}}" class="instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container footer-bottom clearfix">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Dhruva Shaw</span></strong>.
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="{{ url_for('static',filename='assets/vendor/php-email-form/validate.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/venobox/1.8.6/venobox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{{ url_for('static',filename='assets/js/main.js')}}"></script>
+
+</body>
+
+<script>
+    /**
+     * Disable right-click of mouse, F12 key, and save key combinations on page
+     */
+    window.onload = function() {
+        document.addEventListener("contextmenu", function(e) {
+            e.preventDefault();
+        }, false);
+        document.addEventListener("keydown", function(e) {
+            //document.onkeydown = function(e) {
+            // "I" key
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+                disabledEvent(e);
+            }
+            // "J" key
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+                disabledEvent(e);
+            }
+            // "S" key + macOS
+            if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+                disabledEvent(e);
+            }
+            // "U" key
+            if (e.ctrlKey && e.keyCode == 85) {
+                disabledEvent(e);
+            }
+            // "F12" key
+            if (event.keyCode == 123) {
+                disabledEvent(e);
+            }
+        }, false);
+
+        function disabledEvent(e) {
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            } else if (window.event) {
+                window.event.cancelBubble = true;
+            }
+            e.preventDefault();
+            return false;
+        }
+    };
+</script>
+
+</html>

@@ -1,0 +1,88 @@
+{% extends "layout-admin.html" %} {% block body %}
+<!-- Made By Dhruva Shaw
+This is to  mail user of contact us section of dashboard
+-->
+<div class="container">
+    <br/>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/contactus-admin" style="color:#00bfff;">Contact Us-Admin</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Mail {{contact.id}}</li>
+        </ol>
+    </nav>
+    <br/>
+
+    <!-- ==Flashing Messages== -->
+    <div class="abs-tbr bg-3 w-20 z--1 dplay-md-none"></div>
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+        <i class='bx bxs-message-alt-check'></i> {{message}}
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
+    <!-- ==Ends== -->
+
+
+    <br/>
+    <form action="/mail-contactus-admin/{{contact.id}}" method="POST">
+        <div class="form-row">
+
+            <div class="form-group col-md-6">
+                <label><b>Name</b></label>
+                <input type="text" readonly name="name" class="form-control-plaintext" value="{{contact.name}}">
+            </div>
+
+            <div class="form-group col-md-6">
+                <label><b>Email</b></label>
+                <input type="email" readonly class="form-control-plaintext" value="{{contact.email}}" name="email">
+            </div>
+
+        </div>
+
+        <hr/>
+
+        <div class="form-group">
+            <label><b>Subject</b></label>
+            <input type="text" class="form-control" value="Thank You For Contacting Us {{contact.name}}" name="subject" required>
+        </div>
+
+        <hr/>
+
+        <pre>
+Dear, {{contact.name}} 
+            
+Thanks for contacting us.
+</pre>
+
+        <div class="form-group">
+            <label><b>Message</b></label>
+            <textarea type="text" name="message" class="form-control" required>{{contact.msg}}</textarea>
+        </div>
+        <pre>
+Regards,
+Dhruva Shaw
+
+Youtube: <a style="color:#00bfff">{{params['youtube_url']}}</a>
+Instagram: <a style="color:#00bfff">{{params['insta_url']}}</a>
+Github: <a style="color:#00bfff">{{params['github_url']}}</a>
+Velosofy: <a style="color:#00bfff">{{params['velosofy_url']}}</a>
+</pre>
+
+
+        <hr/>
+        <div class="form-row">
+
+            <div class="form-group col-md-2">
+                <label><b>ID</b></label>
+                <input type="number" readonly class="form-control-plaintext" placeholder="{{contact.id}}">
+            </div>
+
+            <div class="form-group col-md-2">
+                <label><b>Date and Time</b></label>
+                <input type="text" readonly class="form-control-plaintext" placeholder="{{contact.dt_time}}">
+            </div>
+
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Mail It!</button>
+    </form>
+</div>
+<br/> {% endblock %}

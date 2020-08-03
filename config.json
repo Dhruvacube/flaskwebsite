@@ -1,0 +1,17 @@
+{
+    "params": {
+        "local_server": "True",
+        "local_uri": "mysql://root:@localhost/website_me",
+        "prod_uri": "mysql://DhruvaCuber:rF68BF9Rj@kPfkX@DhruvaCuber.mysql.pythonanywhere-services.com/DhruvaCuber$website_me",
+        "insta_url": "https://www.instagram.com/dhruva_shaw_/",
+        "github_url": "https://github.com/Dhruvacube",
+        "youtube_url": "https://www.youtube.com/channel/UCzdpJWTOXXhuSKw-yERbu3g",
+        "velosofy_url": "https://www.velosofy.com/user/DhruvaShaw",
+        "email": "dhruvashaw@gmail.com",
+        "gmail-user": "dhruvashaw@gmail.com",
+        "gmail-password": "xqdilbnwcslvivdz",
+        "logo_pic": "logo.png",
+        "admin_email": "dhruvashaw@gmail.com",
+        "admin_password": "cube12345?"
+    }
+}
